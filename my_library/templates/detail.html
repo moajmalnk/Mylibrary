@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block body %}
+<title>{% block title %}details{% endblock %}</title>
+<br>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{book.img.url}}"  style="width: 250px; border-radius: 20px;">
+            </div>
+            <div class="col-md-3">
+                <table width="100%">
+                    <h4 class="card-text text-uppercase text-center"><b>{{book.name}}</b></h4>
+                    <tr>
+                        <td><br><br>
+                            <p class="card-text text-uppercase"><b>Auther:</b></p>
+                        </td>
+                        <td><br><br>
+                            <p class="card-text text-uppercase">{{book.auther}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br>
+                            <p class="card-text text-uppercase"><b>Description:</b></p>
+                        </td>
+                        <td><br>
+                            <p class="card-text text-uppercase">{{book.desc}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br>
+                            <p class="card-text text-uppercase"><b>Category:</b></p>
+                        </td>
+                        <td><br>
+                            <p class="card-text text-uppercase">{{book.category}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br>
+                            <p class="card-text text-uppercase"><b>Stock:</b></p>
+                        </td>
+                        <td><br>
+                            <p class="card-text text-uppercase">{{book.stock}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br>
+                            <p class="card-text text-uppercase"><b>Price:</b></p>
+                        </td>
+                        <td><br>
+                            <p class="card-text text-uppercase">{{book.price}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br>
+                            <p class="card-text text-uppercase"><b>Language:</b></p>
+                        </td>
+                        <td><br>
+                            <p class="card-text text-uppercase">{{book.lang}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br>
+                            <a href="{% url 'mylibrary:update' book.id %}" class="btn btn-lg btn-info form-control">
+                                UPDATE
+                            </a>
+                        </td>
+                        <td><br>
+                            <a href="{% url 'mylibrary:delete' book.id %}" class="btn btn-lg btn-info form-control">
+                                DELETE <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <a class="btn btn-light btn-lg form-control" href="{% url 'mylibrary:home' %}">
+                    HOME <i class="fas fa-home fa-md "></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

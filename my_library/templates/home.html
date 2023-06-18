@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% block body %}
+<title>{% block title %}my library{% endblock %}</title>
+        <br><br>
+        <div class="col-lg-5 col-md-6 mb-4 mb-md-0" style="top:10px;">
+            <div>
+                <form class="search-bar"  action="{% url 'search_app:search' %}">
+                    <input class="" type="search" name="q" placeholder="Search 26,109 books..." aria-label="Search">
+                    <button class="btn btn-light" type="submit"><i class="fa-solid fa-magnifying-glass fa-xl fa-beat"></i></button>
+                </form>
+            </div>
+        </div><br><br>
+        <div class="container" >
+            <div class="row" >
+                <div class="col-md-2" >
+                    <a href="#" style="color: #0e3058;">
+                        <div class="card" style="background: #fff; border-bottom: 5px solid black;">
+                            <br>
+                            <i class="text-center fa fa-book fa-2xl "></i>
+                            <div class="card-body">
+                                <p class="card-title text-center">NOVEL</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xl-2" >
+                    <a href="#" style="color: #0e3058;">
+                        <div class="card" style="background: rgb(251,177,85); border-bottom: 5px solid black;">
+                            <br>
+                            <i class="text-center fa fa-book fa-2xl "></i>
+                            <div class="card-body">
+                                <p class="card-title text-center">STORY</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2" >
+                    <a href="#" style="color: #0e3058;">
+                        <div class="card" style="background: orange; border-bottom: 5px solid black;">
+                            <br>
+                            <i class="text-center fa fa-book fa-2xl "></i>
+                            <div class="card-body">
+                                <p class="card-title text-center">HISTORY</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2" >
+                    <a href="#" style="color: #0e3058;">
+                        <div class="card" style="background: #983392; border-bottom: 5px solid black;">
+                            <br>
+                            <i class="text-center fa fa-book fa-2xl "></i>
+                            <div class="card-body">
+                                <p class="card-title text-center">BIOGRAPHY</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2" >
+                    <a href="#" style="color: #0e3058;">
+                        <div class="card" style="background: yellow; border-bottom: 5px solid black;">
+                            <br>
+                            <i class="text-center fa fa-book fa-2xl "></i>
+                            <div class="card-body">
+                                <p class="card-title text-center">ESSAY</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2" >
+                    <a href="#" style="color: #0e3058;">
+                        <div class="card" style="background: red; border-bottom: 5px solid black;">
+                            <br>
+                            <i class="text-center fa fa-book fa-2xl "></i>
+                            <div class="card-body">
+                                <p class="card-title text-center">POEM</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2" >
+                    <a href="#" style="color: #0e3058;">
+                        <div class="card" style="background: pink; border-bottom: 5px solid black;">
+                            <br>
+                            <i class="text-center fa fa-book fa-2xl "></i>
+                            <div class="card-body">
+                                <p class="card-title text-center">STUDY</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2" >
+                    <a href="#" style="color: #0e3058;">
+                        <div class="card" style="background: grey; border-bottom: 5px solid black;">
+                            <br>
+                            <i class="text-center fa fa-book fa-2xl "></i>
+                            <div class="card-body">
+                                <p class="card-title text-center">TRANSLATION</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" style="background: white">
+                        <h2 class=" text-center" style="padding:15px">#MYLibrary</h2>
+                        <div class="card-body">
+                            <p>
+                                Hi How Are You ?<br><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The word library is derived from a French word "Librairie"; Latin "liber" = book. The library plays an important role in our academic and social lives. Library is an organized collection of information resources made accessible to a defined community for reference or borrowing and this collection of information may be in the form of books, newspapers, CD’s, journals and research papers etc. library provides us physical or digital access to material, and may be a physical building or room, or a virtual space, or both containing collection of informative material.
+                                <br><br>
+                                <b class="text-center">Now Available Categories</b>
+                                <hr style="background: #000">
+                                NOVEL, ESSAY, BIOGRAPHY, HISTORY, TRANSLATION, SHORT STORY,
+                                STORY, POEM, LITERATURE, STUDY.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12">
+            <div class="row">
+                {% for book in book %}
+                <div class="col-md-2.5 p-3">
+                    <div class="card" style="border-radius: 20px; top: 10px;">
+                        <img src="{{book.img.url}}" class="card-img-top" style="border-radius: 20px; height:200px; width:100%;">
+                        <div class="card-body">
+                            <p class="card-title text-center text-uppercase"> <b class="text-strong">{{book.name}}</b><br>({{book.auther}})</p>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p class="card-text text-uppercase"><b>category:</b></p>
+                                    </td>
+                                    <td>
+                                        <p class="card-text text-uppercase">{{book.category}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="card-text text-uppercase"><b>language:</b></p>
+                                    </td>
+                                    <td>
+                                        <p class="card-text text-uppercase">{{book.lang}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><br>
+                                        <a href="{% url 'mylibrary:detail' book.id %}" class="btn btn-sm btn-dark ">
+                                            READ <i class="fa-brands fa-readme fa-flip"></i>
+                                        </a>
+                                    </td>
+                                    <td><br>
+                                        <a href="{% url 'cart:add_cart' book.id %}" class="btn btn-sm btn-dark ">
+                                            CART <i class="fa-solid fa-cart-shopping"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-md-12" style="top: 50px;">
+            <div class="row ">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-cherry">
+                        <div class="card-statistic-3 p-5">
+                            <div class="card-icon card-icon-large"><i class="fas fa-download"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">DOWNLOADS</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0">
+                                        3,243
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>13% <i class="fa fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-blue-dark">
+                        <div class="card-statistic-3 p-5">
+                            <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">PATRONS</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0">
+                                        25.07k
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>30% <i class="fa fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="30.23%" aria-valuenow="30.23" aria-valuemin="0" aria-valuemax="100" style="width: 30.23%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-green-dark">
+                        <div class="card-statistic-3 p-5">
+                            <div class="card-icon card-icon-large"><i class="fas fa-book"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">TOTAL BOOKS</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0">
+                                        112535
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>92% <i class="fa fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-orange" role="progressbar" data-width="50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-orange-dark">
+                        <div class="card-statistic-3 p-5">
+                            <div class="card-icon card-icon-large"><i class="fas fa-rupee-sign"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">VISITORS</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0">
+                                        125.46M
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>20% <i class="fa fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="mx-auto">
+            {% if book.paginator.num_pages > 1 %}
+            <div class="text-center">
+                <br><br><br>
+                {% for pg in book.paginator.page_range %}
+                    <a href="?page={{pg}}"  class="btn btn-primary {% if book.number == pg %} active {% endif %}">{{pg}}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+{% endblock %}

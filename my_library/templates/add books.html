@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block body %}
+<title>{% block title %}add books{% endblock %}</title>
+<style>
+    #my_form{
+        width: auto;
+        padding: 5px 420px;
+        border-radius: 40px;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn {
+        padding: .45rem 1.5rem .3rem;
+        border-radius: 200px;
+        padding: 5px 135px;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<form method="post" enctype="multipart/form-data" id="my_form">
+    {% csrf_token %}
+    <br>
+    <h3 class="text-center">ADD BOOKS</h3><br>
+    BOOK NO<input class="form-control" required value="1001" type="number" name="book_id" placeholder="Enter Book Number"><br>
+    NAME<input class="form-control" required type="text" name="name" placeholder="Enter Book Name"><br>
+    SLUG<input class="form-control" required type="text" name="slug" placeholder="Enter Book Name Again"><br>
+    DESCRIPTION<textarea class="form-control" name="desc" placeholder="About Book"></textarea><br>
+    AUTHER<input class="form-control" type="text" required name="auther" placeholder="Enter Auther Name"><br>
+    CATEGORY<input class="form-control form-select" required type="text" name="category" placeholder="Enter Category"><br>
+    PRICE<input class="form-control" type="number" name="price" placeholder="Enter Price"><br>
+    STOCK<input class="form-control" value="20" type="number" name="stock" placeholder="Enter Stock"><br>
+    IMAGE<input class="form-control" type="file" name="img" required><br>
+    <label for="lang">LANGUAGE</label>
+    <select name="lang" class="form-control form-select" id="lang">
+        <option value="">_________</option>
+        <option value="malayalam">MALAYALAM</option>
+        <option value="english">ENGLISH</option>
+        <option value="arabic">ARABIC</option>
+        <option value="other">OTHER</option>
+    </select><br>
+    <input class=" btn btn-lg btn-primary" type="submit" value="ADD">
+    <a href="{% url 'mylibrary:home' %}" class="btn btn-lg btn-secondary">
+        HOME
+    </a>
+</form>
+{% endblock %}

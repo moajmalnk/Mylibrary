@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+<title>{% block title %}delete{% endblock %}</title>
+<form method="post">
+  {% csrf_token %}
+  <div class="container">
+    <br><br><br><br>
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+        <div class="col-md-4">
+        <h4 class="text-center">ARE YOU WANT TO DELETE THIS MOVIE ?</h4><br>
+        <input class="form-control btn btn-lg btn-danger" type="submit" value="DELETE">
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

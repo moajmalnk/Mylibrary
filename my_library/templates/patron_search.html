@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block body %}
+<title>{% block title %}search patron{% endblock %}</title>
+<br>
+<div>
+    <h3 class="text-center my_search_text">YOU HAVE SEARCHED FOR : <b>"{{query}}"</b></h3>
+</div>
+<br><br>
+{% if books %}
+<div class="col-md-12">
+    <div class="row">
+        {% for book in books %}
+        <div class="col-md-3">
+            <div class="card" style="background: transparent;" >
+                <img src="https://imgmedia.lbb.in/media/2020/03/5e6fa0adcdf431136ea4aeb9_1584373933388.jpg"  style="width: 100%; border-radius: 20px; height: 250px;">
+                <div class="card-body">
+                    <h4 class="card-text text-uppercase text-center"><b>{{book.name}}</b></h4>
+                    <p class="card-text text-uppercase"><b>Card No:</b> {{book.card_no}}</p>
+                    <p class="card-text text-uppercase"><b>Gmail:</b> {{book.gmail}}</p>
+                    <p class="card-text text-uppercase"><b>phone number:</b> {{book.phone}}</p>
+                    <table>
+                        <tr>
+                            <td ><br>
+                                <a href="{% url 'mylibrary:profile' book.id %}" class="btn btn-lg btn-info ">
+                                    CONTACT <i class="fa fa-user fa-flip" aria-hidden="true"></i>
+                                </a>
+                            </td>
+
+                            <td><br>
+                                <a class="btn btn-light btn-lg " href="{% url 'mylibrary:home' %}">
+                                    HOME <i class="fas fa-home fa-md "></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<br><br><br><br>
+<h1 class="text-uppercase text-white">"{{query}}" not available here search more.</h1>
+<br><br><br><br>
+{% endif %}
+{% endblock %}

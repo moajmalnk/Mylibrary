@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}
+{% load static %}
+    {% if category %}
+        {{category.name}} Library
+    {% else %}
+        My Library
+    {% endif %}
+{% endblock %}
+{% block body %}x
+{% endblock %}
+{% block metadescription %}
+    {% if category %}
+        <br>
+        <p class="text-center">
+            {{ category.description|truncatewords:155 }}
+        </p>
+    {% else %}
+        <br>
+        <p class="text-center">
+            WELCOME TO MY LIBRARY WHERE YOU CAN BUY DIFFERENT BOOKS ...
+        </p>
+    {% endif %}
+    {% if category %}
+    <div>
+        <div class="row my_row_class">
+            <div class="mx-auto">
+                <p><a href="{% url 'mylibrary:home' %}">| HOME |</a></p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="mx-auto">
+    {% if category %}
+        <img src="{{category.img.url}}" alt="{{category.name}}" width="1350px">
+</div>
+    <br>
+<div>
+    <h1 class="text-center"><b>{{category.name}}</b></h1>
+    <p class="text-center">{{category.desc}}</p>
+</div>
+    {% else %}
+<div class="my_images my_image_padding">
+    <img src="{% static 'img/banner1.png' %}" alt="My Library Books" width="100%">
+</div>
+<br>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="background: white">
+                <h2 class=" text-center" style="padding:15px">#MYLibrary</h2>
+                <div class="card-body">
+                    <p>
+                        Hi How Are You ?<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The word library is derived from a French word "Librairie"; Latin "liber" = book. The library plays an important role in our academic and social lives. Library is an organized collection of information resources made accessible to a defined community for reference or borrowing and this collection of information may be in the form of books, newspapers, CD’s, journals and research papers etc. library provides us physical or digital access to material, and may be a physical building or room, or a virtual space, or both containing collection of informative material.
+                        <br><br>
+                        <b class="text-center">Now Available Categories</b>
+                        <hr style="background: #000">
+                        NOVEL, ESSAY, BIOGRAPHY, HISTORY, TRANSLATION, SHORT STORY,
+                        STORY, POEM, LITERATURE, STUDY.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endif %}
+<div class="col-md-12" >
+  <div class="row mx-auto">
+      <div class="my_bottom_margin col-lg-2">
+          <div class="card text-center" style="min-width:11rem;">
+              <a href="#"><img class="card-img-top my_card_image" src="{{book.img.url}}" alt="{{book.name}}"></a>
+              <div class="card-body text-center">
+                  <h5 class="card-title">{{book.name}}</h5>
+                  <p class="card-text">{{book.desc}}</p>
+                  <p class="card-text">$ {{book.price}}</p>
+                  <a href="#" class="btn btn-outline-info">DOWNLOAD</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

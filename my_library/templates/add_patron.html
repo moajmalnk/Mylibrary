@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+<title>{% block title %}add patron{% endblock %}</title>
+<style>
+    #my_form{
+        width: auto;
+        padding: 20px 580px;
+        border-radius: 40px;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn {
+        padding: .45rem 1.5rem .3rem;
+        border-radius: 200px;
+        padding: 5px 54px;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<form method="post" id="my_form">
+    {% csrf_token %}
+    <h3 class="text-center">CREATE PROFILE</h3><br>
+    CARD NO<input class="form-control" value="10091" type="number" name="card_no"><br>
+    NAME<input class="form-control" type="text" name="name" placeholder="Enter Name"><br>
+    PHONE NUMBER<input class="form-control" type="number" name="phone" placeholder="Enter Phone "><br>
+    GMAIL<input class="form-control" type="email" name="gmail" placeholder="Enter Category"><br>
+<!--    IMAGE<input class="form-control" type="file" name="img"><br>-->
+    <input class=" btn btn-lg btn-primary" type="submit" value="ADD">
+    <a href="{% url 'mylibrary:home' %}" class="btn btn-lg btn-secondary">
+        HOME
+    </a>
+</form>
+{% endblock %}

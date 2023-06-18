@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {{book.desc|truncatewords:155}}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{book.name}} - MY LIBRARY
+    {% endif %}
+{% endblock %}
+{% block body %}
+<div class="row my_prod_row_class">
+    <div class="mx-auto">
+        <p><a href="{% url 'mylibrary:all_product_category' %}">HOME</a> | <a href="{{book.category.get_url}}">{{book.category}}</a> | <a href="#"> {{book.name}} </a></p>
+    </div>
+</div>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-5 text-center">
+            <div style="width:18rem">
+                <img src="{{book.img.url}}" alt="{{book.name}}">
+            </div>
+        </div>
+        <div>
+            <div class="col-3 col-sm-12 col-md-12 col-lg-8">
+                <div>
+                    <h1 class="my_prod_title"><b>{{book.name}}</b></h1>
+                    <p>$ {{ book.price}}</p>
+                    <p class="my_title"><b>ABOUT {{book.name}}</b></p>
+                    <p>{{book.desc}}</p>
+                    <p><b>CATEGORY :</b> {{book.category}}</p>
+                    {% if book.stock <= 0 %}
+                    <p class="text-center"><b>OUT OF STOCK</b></p>
+                    {% else %}
+                    <a class="btn btn-success" href="{% url 'cart:add_cart' book.id %}">ADD TO CART</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
